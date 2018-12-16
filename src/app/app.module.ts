@@ -5,10 +5,14 @@ import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TransactionComponent } from './transaction/transaction.component';
+import { TempltbleviewComponent } from '../templates/templtbleview/templtbleview.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TransactionComponent,
+    TempltbleviewComponent
   ],
   imports: [
     BrowserModule,
