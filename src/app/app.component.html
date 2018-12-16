@@ -1,32 +1,59 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-    <!--https://getbootstrap.com/docs/4.0/content/tables/-->
-<button type="button"  (click)='btnClick()'>Click me</button>
+<!--https://getbootstrap.com/docs/4.0/content/tables/-->
+<div class="container">
 
-<table class="table" >
-  <thead>
-  <tr>
-    <th >
-      TranDate
-    </th>
-    <th >
-        Desc
-      </th>
-    <th >
-        Amount
-    </th>
-    <th >
-        Balance
-    </th> 
-  </tr>
-</thead>
-<tbody>
-  <tr *ngFor="let item of data; trackBy: trackElement">
-    <td>{{item.TranDate}}</td>
-    <td>{{item.Desc}}</td>
-    <td>{{item.Amount}}</td>
-    <td>{{item.Balance}}</td>
-  </tr>
-  </tbody>
-</table>
-<router-outlet></router-outlet>
+  <div id="headerdiv">
+   <h2>My app</h2>
+  </div>
+
+
+<router-outlet>
+    <!--<button type="button"  (click)='btnClick()'>Click me</button>
+
+    <button type="button"  (click)='btnNext()'>Next</button>
+    <button type="button"  (click)='btnPrev()'>Prev</button>
+    
+    
+    <table class="table" >
+        <thead>
+        <tr>
+          <th >
+            TranDate
+          </th>
+          <th >
+              Desc
+            </th>
+          <th >
+              Amount
+          </th>
+          <th >
+              Balance
+          </th> 
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of data |slice:[frm]:[to]; let ind=index; trackBy: trackElement">
+          <td>{{item.TranDate}}</td>
+          <td>{{item.Desc}}</td>
+          <td>{{item.Amount}}</td>
+          <td>{{item.Balance}}</td>
+          <td>{{ind}}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <td>test</td>
+        <td></td>
+        <td></td>
+        <td>test</td>
+      </tfoot>
+    </table>
+    {{frm}}
+    {{to}}
+    -->
+</router-outlet>
+
+<div id="footerdiv">
+    <strong>footer</strong>
+  <div>
+  
+</div>
