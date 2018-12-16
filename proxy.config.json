@@ -1,0 +1,7 @@
+{
+  "/api/*": {
+    "target": "http://mbaby01/PointAppWebAPI/",
+    "secure": false,
+    "logLevel":"debug"
+    }
+}
