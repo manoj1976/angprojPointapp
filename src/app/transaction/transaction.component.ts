@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Services } from '@angular/core/src/view';
+import { from } from 'rxjs';
+import { Transaction } from 'src/models/transaction';
 
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-transaction',
@@ -7,13 +11,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./transaction.component.css']
 })
 export class TransactionComponent implements OnInit {
-
- 
-  constructor(){
+  columns:string[]=['TranDate', 'Desc','Amount','Balance'];
+  data:Array<Transaction>;
+  
+  constructor(private datasvc:DataService){
   }
 
 
   ngOnInit() {
-    
+    this.btnClick();
+  }
+  
+  btnClick(){
+    this.datasvc.getTransactions()
+    .subscribe((data) =>{ 
+      this.data=data;
+  },
+  error=>{      
+    alert('error');
+  });
   }
 }
