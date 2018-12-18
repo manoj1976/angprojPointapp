@@ -16,12 +16,20 @@ export class TempletbleeditComponent implements OnInit {
   env=environment;
   
   frm:number=0;to:number=this.env.nooftablerecords;
-  selectedrow:any={id:0};
+  selectedrow:any={id:1};
 
   constructor() { }
 
   ngOnInit() {
+    
+    
   }
+  ngAfterViewChecked(){
+    if (!this.data==null)
+    if (this.data.length>0) 
+    this.rowClick(this.data[0]);
+  }
+
   
   btnNext(){if (!(this.to>=this.data.length)) {this.frm+=this.env.nooftablerecords;this.to+=this.env.nooftablerecords;}}
   btnPrev(){if (!(this.frm<=0)) {this.frm-=this.env.nooftablerecords;this.to-=this.env.nooftablerecords;}}
@@ -32,13 +40,17 @@ export class TempletbleeditComponent implements OnInit {
 
   rowClick(itm:object){
     this.selectedrow=itm;
-    
     this.onRowClicked.emit(itm);//Event
   }
 
-  getColor(itm:any){
+  /*getColor(itm:any){
     if (itm.id===this.selectedrow.id)
       return '#29434e';
+  }*/
+  
+  getColor(itm:any):string{
+    if (itm.id===this.selectedrow.id)
+      return 'table table-success';
   }
-
+  
 }
