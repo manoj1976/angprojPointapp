@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-templmenu1',
@@ -6,19 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./templmenu1.component.css']
 })
 export class Templmenu1Component implements OnInit {
-
+  @Input('dataitm') dataitm:any;
+  
   constructor() { }
 
   ngOnInit() {
   }
   
   btnEdit(){
-    alert('a');
-  }
-
-  display(itm){
-    console.log('xx');
-    alert(itm);
-
+    alert(this.dataitm.id);
   }
 }

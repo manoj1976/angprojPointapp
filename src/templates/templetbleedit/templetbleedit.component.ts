@@ -10,13 +10,13 @@ export class TempletbleeditComponent implements OnInit {
   @Input('columns') columns:string[];
   @Input('data') data:Array<object>;
 
-  @Output() rowSelected = new EventEmitter(); //event
+  @Output() onRowClicked = new EventEmitter(); //event
 
-
+  
   env=environment;
   
   frm:number=0;to:number=this.env.nooftablerecords;
-  selectedrow:object={id:1};
+  selectedrow:any={id:0};
 
   constructor() { }
 
@@ -33,12 +33,11 @@ export class TempletbleeditComponent implements OnInit {
   rowClick(itm:object){
     this.selectedrow=itm;
     
-    this.rowSelected.emit(this.selectedrow);//Event
-    console.log('clickedd');
+    this.onRowClicked.emit(itm);//Event
   }
 
-  getColor(itm:object){
-    if (itm.id==this.selectedrow.id)
+  getColor(itm:any){
+    if (itm.id===this.selectedrow.id)
       return '#29434e';
   }
 
