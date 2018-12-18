@@ -39,7 +39,6 @@
     </table>
   -->
 
-{{masterName}}
   <table class="table" >
       <thead>
       <tr>
@@ -48,8 +47,8 @@
         </th>
       </tr>
     </thead>
-    <tbody>
-      <tr *ngFor="let item of data |slice:[frm]:[to]; let ind=index; trackBy: trackElement">
+    <tbody  *ngFor="let item of data |slice:[frm]:[to]; let ind=index; trackBy: trackElement">
+      <tr>
           <td *ngFor="let column of columns">
               {{item[column]}}
           </td>

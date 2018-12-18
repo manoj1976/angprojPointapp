@@ -1,0 +1,25 @@
+<table class="table table-hover" >
+  <thead>
+  <tr>
+    <th *ngFor='let column of columns'>
+      {{column}}
+    </th>
+  </tr>
+</thead>
+<tbody  *ngFor="let item of data |slice:[frm]:[to]; let ind=index; trackBy: trackElement; first as isFirst" (click)="rowClick(item)">
+  <tr [ngStyle]="{'backgroundColor': getColor(item)}">
+      <td *ngFor="let column of columns" >
+          {{item[column]}}
+      </td>
+  </tr>
+</tbody>
+<tfoot>
+  <td>test</td>
+  <td></td>
+  <td></td>
+  <td>test</td>
+</tfoot>
+</table>
+
+{{frm}}
+{{to}}
