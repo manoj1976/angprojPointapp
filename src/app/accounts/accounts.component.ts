@@ -9,7 +9,7 @@ import { Transaction } from 'src/models/transaction';
 })
 export class AccountsComponent implements OnInit {
   columns:string[]=['TranDate', 'Desc','Amount','Balance'];
-  data:Array<Transaction>;dataitm:any;
+  data:Array<Transaction>;dataitm:any={};
   
   constructor(private datasvc:DataService){
   }
@@ -22,13 +22,14 @@ export class AccountsComponent implements OnInit {
     this.datasvc.getTransactions()
     .subscribe((data) =>{ 
       this.data=data;
+      if (!(this.data===null)) this.dataitm=data[0];
   },
   error=>{      
     alert('error');
   });
   }
 
-  display(itm:any):void{
+  selecteditm(itm:any):void{
     this.dataitm=itm;
   }
 
