@@ -21,6 +21,11 @@ export class DataService {
        return this.http.get(varBaseURL).map((res: Response) => res.json());
   }
 
+  getAccounts(){
+    var varBaseURL=this.getBaseURL()+'Accounts?id=4&pageid=1';
+       return this.http.get(varBaseURL).map((res: Response) => res.json());
+  }
+
   getBaseURL(){
    //return 'http://localhost:61010/api/';
    return '/api/'

@@ -8,7 +8,7 @@ import { Transaction } from 'src/models/transaction';
   styleUrls: ['./accounts.component.css']
 })
 export class AccountsComponent implements OnInit {
-  columns:string[]=['TranDate', 'Desc','Amount','Balance'];
+  columns:string[]=['Code', 'Name','Address1','City','County'];
   pagecaption:string='Accounts'
   data:Array<Transaction>;dataitm:any={};
   
@@ -20,7 +20,7 @@ export class AccountsComponent implements OnInit {
   }
   
   btnClick(){
-    this.datasvc.getTransactions()
+    this.datasvc.getAccounts()
     .subscribe((data) =>{ 
       this.data=data;
       if (!(this.data===null)) this.dataitm=data[0];
