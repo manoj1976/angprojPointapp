@@ -15,12 +15,22 @@
   </tr>
 </tbody>
 <tfoot>
-  <td>test</td>
-  <td></td>
-  <td></td>
-  <td>test</td>
-</tfoot>
+    <td *ngFor="let column of columns;let isfirst=first;let islast=last">
+        <div *ngIf='isfirst'>
+            <button type="button" (click)='btnFirst()' [disabled]='this.pageno<=1' [hidden]='this.data==null || (this.data.length<=this.env.nooftablerecords) ' [class]="env.firstbtnclass">First</button>
+            <button type="button" (click)='btnPrev()' [disabled]='this.pageno<=1' [hidden]='this.data==null || (this.data.length<=this.env.nooftablerecords) ' [class]="env.prevbtnclass">Prev</button>
+
+        </div>
+
+        <div *ngIf='islast'>
+            <button type="button" (click)='btnNext()' [disabled]='this.data==null|| ((this.pageno *this.env.nooftablerecords)>this.data.length)' [hidden]='this.data==null || (this.data.length<=this.env.nooftablerecords)' [class]="env.nextbtnclass">Next</button>
+            <button type="button" (click)='btnLast()' [disabled]='this.data==null|| ((this.pageno *this.env.nooftablerecords)>this.data.length)' [hidden]='this.data==null || (this.data.length<=this.env.nooftablerecords)' [class]="env.lastbtnclass">Last</button>
+        </div>
+    </td>
+
+  </tfoot>
 </table>
 
-{{frm}}
-{{to}}
+   <!--{{this.pageno}}{{frm}}
+    {{to}}
+    -->

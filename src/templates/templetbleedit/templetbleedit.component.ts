@@ -1,5 +1,6 @@
 import { Component,EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { AppService } from 'src/services/app.service';
 
 //https://dzone.com/articles/understanding-output-and-eventemitter-in-angular -- explains the event
 @Component({
@@ -16,16 +17,17 @@ export class TempletbleeditComponent implements OnInit {
   
   env=environment;
   
-  frm:number=0;to:number=this.env.nooftablerecords;
+  frm:number=0;to:number=this.env.nooftablerecords;pageno:number=1;
   selectedrow:any={id:0};
 
-  constructor() { }
-
+  constructor(private appsvc:AppService){
+    
+  }
   ngOnInit() {
   }
   
-  btnNext(){if (!(this.to>=this.data.length)) {this.frm+=this.env.nooftablerecords;this.to+=this.env.nooftablerecords;}}
-  btnPrev(){if (!(this.frm<=0)) {this.frm-=this.env.nooftablerecords;this.to-=this.env.nooftablerecords;}}
+ // btnNext(){if (!(this.to>=this.data.length)) {this.frm+=this.env.nooftablerecords;this.to+=this.env.nooftablerecords;}}
+ // btnPrev(){if (!(this.frm<=0)) {this.frm-=this.env.nooftablerecords;this.to-=this.env.nooftablerecords;}}
   
   trackElement(index: number, element: any) {
     return element ? element.guid : null;
@@ -40,6 +42,32 @@ export class TempletbleeditComponent implements OnInit {
     if (itm.id===this.selectedrow.id)
       return '#29434e';
   }*/
+
+  btnPrev(){
+    let refvar=[{frm:this.frm,to:this.to,pageno:this.pageno}];
+    this.appsvc.btnPrev(this.data.length,refvar);
+    this.pageno =refvar[0].pageno;this.frm=refvar[0].frm;this.to=refvar[0].to;
+  }
+
+  btnNext(){
+    let refvar=[{frm:this.frm,to:this.to,pageno:this.pageno}];
+    this.appsvc.btnNext(this.data.length,refvar);
+    this.pageno =refvar[0].pageno;this.frm=refvar[0].frm;this.to=refvar[0].to;
+  }
+  
+  btnFirst(){
+    let refvar=[{frm:this.frm,to:this.to,pageno:this.pageno}];
+    this.appsvc.btnFirst(this.data.length,refvar);
+    this.pageno =refvar[0].pageno;this.frm=refvar[0].frm;this.to=refvar[0].to;     
+  }
+
+
+  btnLast(){
+    let refvar=[{frm:this.frm,to:this.to,pageno:this.pageno}];
+    this.appsvc.btnLast(this.data.length,refvar);
+    this.pageno =refvar[0].pageno;this.frm=refvar[0].frm;this.to=refvar[0].to;     
+  }
+
   
   getColor(itm:any):string{
     if (itm.id===this.selectedrow.id){

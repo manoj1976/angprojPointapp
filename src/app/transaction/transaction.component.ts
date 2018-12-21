@@ -12,8 +12,11 @@ import { DataService } from '../../services/data.service';
 })
 export class TransactionComponent implements OnInit {
   columns:string[]=['TranDate', 'Desc','Amount','Balance'];
+  pagecaption:string='Transactions'
+
   data:Array<Transaction>;
   
+ 
   constructor(private datasvc:DataService){
   }
 
@@ -31,4 +34,10 @@ export class TransactionComponent implements OnInit {
     alert('error');
   });
   }
+
+  onRefresh(itm:any):void{
+    this.btnClick();
+
+  }
+
 }

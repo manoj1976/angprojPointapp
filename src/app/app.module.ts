@@ -9,7 +9,9 @@ import { TransactionComponent } from './transaction/transaction.component';
 import { TempltbleviewComponent } from '../templates/templtbleview/templtbleview.component';
 import { Templmenu1Component } from '../templates/templmenu1/templmenu1.component';
 import { TempletbleeditComponent } from '../templates/templetbleedit/templetbleedit.component';
+import { TemplpageheadingComponent } from '../templates/templpageheading/templpageheading.component';
 import { AccountsComponent } from './accounts/accounts.component';
+
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { AccountsComponent } from './accounts/accounts.component';
     TempltbleviewComponent,
     Templmenu1Component,
     TempletbleeditComponent,
+    TemplpageheadingComponent,
     AccountsComponent
   ],
   imports: [

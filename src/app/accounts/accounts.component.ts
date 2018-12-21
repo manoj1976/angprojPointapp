@@ -9,6 +9,7 @@ import { Transaction } from 'src/models/transaction';
 })
 export class AccountsComponent implements OnInit {
   columns:string[]=['TranDate', 'Desc','Amount','Balance'];
+  pagecaption:string='Accounts'
   data:Array<Transaction>;dataitm:any={};
   
   constructor(private datasvc:DataService){
@@ -33,4 +34,9 @@ export class AccountsComponent implements OnInit {
     this.dataitm=itm;
   }
 
+  onRefresh(itm:any):void{
+    alert('te');
+    this.btnClick();
+
+  }
 }
