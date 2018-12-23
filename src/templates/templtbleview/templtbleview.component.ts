@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { AppService } from 'src/services/app.service';
+import {FmtPipe} from '../../pipes/fmt.pipe';
 
 @Component({
   selector: 'app-templtbleview',

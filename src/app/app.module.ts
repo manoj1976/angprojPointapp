@@ -10,7 +10,10 @@ import { TempltbleviewComponent } from '../templates/templtbleview/templtbleview
 import { Templmenu1Component } from '../templates/templmenu1/templmenu1.component';
 import { TempletbleeditComponent } from '../templates/templetbleedit/templetbleedit.component';
 import { TemplpageheadingComponent } from '../templates/templpageheading/templpageheading.component';
+import { FmtPipe } from '../pipes/fmt.pipe';
+
 import { AccountsComponent } from './accounts/accounts.component';
+
 
 
 @NgModule({
@@ -21,7 +24,9 @@ import { AccountsComponent } from './accounts/accounts.component';
     Templmenu1Component,
     TempletbleeditComponent,
     TemplpageheadingComponent,
-    AccountsComponent
+    FmtPipe,
+    AccountsComponent,
+    
   ],
   imports: [
     BrowserModule,
