@@ -37,14 +37,14 @@
   <table class="table" >
       <thead>
       <tr>
-        <th *ngFor='let column of columns'>
+        <th *ngFor='let column of columns'  [ngStyle]="{'text-align': getColumnAlignStyle(column)=='r'? 'right':'left'}">
           {{column}}
         </th>
       </tr>
     </thead>
     <tbody  *ngFor="let item of data |slice:[frm]:[to]; let ind=index; trackBy: trackElement">
       <tr>
-          <td *ngFor="let column of columns"  [ngStyle]="{'text-align': getColumnAlignStyle(column)==r? 'right':'left'}" >
+          <td *ngFor="let column of columns"  [ngStyle]="{'text-align': getColumnAlignStyle(column)=='r'? 'right':'left'}" >
               {{item[column]|fmt:column}}
           </td>
       </tr>
@@ -57,7 +57,7 @@
 
           </div>
 
-          <div *ngIf='islast'>
+          <div *ngIf='islast'  [ngStyle]="{'text-align': true? 'right':'left'}">
               <button type="button" (click)='btnNext()' [disabled]='this.data==null|| ((this.pageno *this.env.nooftablerecords)>this.data.length)' [hidden]='this.data==null || (this.data.length<=this.env.nooftablerecords)' [class]="env.nextbtnclass">Next</button>
               <button type="button" (click)='btnLast()' [disabled]='this.data==null|| ((this.pageno *this.env.nooftablerecords)>this.data.length)' [hidden]='this.data==null || (this.data.length<=this.env.nooftablerecords)' [class]="env.lastbtnclass">Last</button>
           </div>

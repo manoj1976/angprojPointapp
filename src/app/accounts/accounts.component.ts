@@ -35,7 +35,6 @@ export class AccountsComponent implements OnInit {
   }
 
   onRefresh(itm:any):void{
-    alert('te');
     this.btnClick();
 
   }

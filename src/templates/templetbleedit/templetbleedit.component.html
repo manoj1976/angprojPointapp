@@ -9,8 +9,8 @@
 <tbody  *ngFor="let item of data |slice:[frm]:[to]; let ind=index; trackBy: trackElement; first as isFirst" (click)="rowClick(item)">
   <!--<tr [ngStyle]="{'backgroundColor': getColor(item)}" [class]="getColor(item)"> -->
      <tr [class]="getColor(item)"> 
-      <td *ngFor="let column of columns" >
-          {{item[column]}}
+      <td *ngFor="let column of columns" [ngStyle]="{'text-align': getColumnAlignStyle(column)==r? 'right':'left'}" >
+          {{item[column]|fmt:column}}
       </td>
   </tr>
 </tbody>

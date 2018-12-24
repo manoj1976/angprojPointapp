@@ -1,6 +1,8 @@
 import { Component,EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { AppService } from 'src/services/app.service';
+import { FmtPipe } from 'src/pipes/fmt.pipe';
+import { SessionService } from 'src/services/session.service';
 
 //https://dzone.com/articles/understanding-output-and-eventemitter-in-angular -- explains the event
 @Component({
@@ -20,7 +22,7 @@ export class TempletbleeditComponent implements OnInit {
   frm:number=0;to:number=this.env.nooftablerecords;pageno:number=1;
   selectedrow:any={id:0};
 
-  constructor(private appsvc:AppService){
+  constructor(private appsvc:AppService,private session: SessionService){
     
   }
   ngOnInit() {
@@ -68,10 +70,14 @@ export class TempletbleeditComponent implements OnInit {
     this.pageno =refvar[0].pageno;this.frm=refvar[0].frm;this.to=refvar[0].to;     
   }
 
+  getColumnAlignStyle(parcolname:string){
+    let fmtpipe:FmtPipe=new FmtPipe(this.session);
+    return fmtpipe.getColumnAlignStyle(parcolname);
+  }
   
   getColor(itm:any):string{
     if (itm.id===this.selectedrow.id){
-      return 'table table-success';
+      return this.env.tblselectedrowclass;
     }
   }
   
