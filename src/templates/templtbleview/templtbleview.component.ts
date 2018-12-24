@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { AppService } from 'src/services/app.service';
 import {FmtPipe} from '../../pipes/fmt.pipe';
+import { SessionService } from 'src/services/session.service';
 
 @Component({
   selector: 'app-templtbleview',
@@ -13,11 +14,12 @@ export class TempltbleviewComponent implements OnInit {
   @Input('data') data:Array<object>;
 
   env=environment;en_prevbtn=true;en_nextbtn=true;
-  
+//  fmtpipe:FmtPipe;
+
   frm:number=0;to:number=this.env.nooftablerecords;pageno:number=1;
   
-
-  constructor(private appsvc:AppService){
+  
+  constructor(private appsvc:AppService,private session: SessionService){
     
   }
 
@@ -49,7 +51,11 @@ export class TempltbleviewComponent implements OnInit {
     this.pageno =refvar[0].pageno;this.frm=refvar[0].frm;this.to=refvar[0].to;     
   }
 
-    
+  getColumnAlignStyle(parcolname:string){
+    let fmtpipe:FmtPipe=new FmtPipe(this.session);
+    return fmtpipe.getColumnAlignStyle(parcolname);
+  }
+
   trackElement(index: number, element: any) {
     return element ? element.guid : null;
   }

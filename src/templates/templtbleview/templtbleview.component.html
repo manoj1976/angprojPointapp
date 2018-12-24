@@ -44,7 +44,7 @@
     </thead>
     <tbody  *ngFor="let item of data |slice:[frm]:[to]; let ind=index; trackBy: trackElement">
       <tr>
-          <td *ngFor="let column of columns">
+          <td *ngFor="let column of columns"  [ngStyle]="{'text-align': getColumnAlignStyle(column)==r? 'right':'left'}" >
               {{item[column]|fmt:column}}
           </td>
       </tr>
