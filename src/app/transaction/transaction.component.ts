@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Services } from '@angular/core/src/view';
 import { from } from 'rxjs';
-import { Transaction } from 'src/models/transaction';
 
 import { DataService } from '../../services/data.service';
+import { AppErrorHandlerService } from 'src/services/app-error-handler.service';
 
 @Component({
   selector: 'app-transaction',
@@ -14,10 +14,13 @@ export class TransactionComponent implements OnInit {
   columns:string[]=['TranDate', 'Desc','Amount','Balance'];
   pagecaption:string='Transactions'
 
-  data:Array<Transaction>;
+  data:{};
   
  
-  constructor(private datasvc:DataService){
+  constructor(
+    private datasvc:DataService,
+    private errsvc:AppErrorHandlerService,
+    ){
   }
 
 
@@ -31,7 +34,7 @@ export class TransactionComponent implements OnInit {
       this.data=data;
   },
   error=>{      
-    alert('error');
+    this.errsvc.errorHandler(error,true);
   });
   }
 

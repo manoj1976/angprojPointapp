@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
+
 import { DataService } from 'src/services/data.service';
-import { Transaction } from 'src/models/transaction';
+import { AppErrorHandlerService } from 'src/services/app-error-handler.service';
 
 @Component({
   selector: 'app-accounts',
@@ -10,9 +12,12 @@ import { Transaction } from 'src/models/transaction';
 export class AccountsComponent implements OnInit {
   columns:string[]=['Code', 'Name','Address1','City','County'];
   pagecaption:string='Accounts'
-  data:Array<Transaction>;dataitm:any={};
+  data:any;dataitm:any={};
   
-  constructor(private datasvc:DataService){
+  constructor(
+    private datasvc:DataService,
+    private errsvc:AppErrorHandlerService,
+    ){
   }
 
   ngOnInit() {
@@ -23,10 +28,10 @@ export class AccountsComponent implements OnInit {
     this.datasvc.getAccounts()
     .subscribe((data) =>{ 
       this.data=data;
-      if (!(this.data===null)) this.dataitm=data[0];
+      if ((this.data!=null) && (this.data!=undefined)) this.dataitm=data[0];
   },
   error=>{      
-    alert('error');
+    this.errsvc.errorHandler(error,true);
   });
   }
 
@@ -38,4 +43,5 @@ export class AccountsComponent implements OnInit {
     this.btnClick();
 
   }
+
 }

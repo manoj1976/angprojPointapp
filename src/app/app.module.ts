@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';//For toast message
+import { ToastrModule } from 'ngx-toastr'; //For toast message
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,7 +34,9 @@ import { AccountsComponent } from './accounts/accounts.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    BrowserAnimationsModule, //required for ToastrModule added
+    ToastrModule.forRoot() // ToastrModule added
 
   ],
   providers: [],
