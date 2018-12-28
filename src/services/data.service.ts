@@ -1,14 +1,13 @@
 import { Injectable }    from '@angular/core';
 import { Headers, Http, Response, ResponseContentType, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-//import 'rxjs/add/operator/catch';
 import { map } from 'rxjs/operators';
 import 'rxjs/add/operator/map'
 import * as Rx from "rxjs";
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { appInitializerFactory } from '@angular/platform-browser/src/browser/server-transition';
 import { Params } from '@angular/router';
-//import { Transaction } from 'src/models/transaction';
+import { HttpParamsOptions } from '@angular/common/http/src/params';
 
 
 @Injectable({
@@ -16,7 +15,7 @@ import { Params } from '@angular/router';
 })
 export class DataService {
 
-  constructor(private http :Http) {}
+  constructor(private http :Http,private httpclient:HttpClient) {}
 
   getTransactions(): any{
     var varBaseURL=this.getBaseURL()+'Transactions?id=4&pageid=1';
@@ -24,26 +23,29 @@ export class DataService {
   }
 
   getAccounts(){
-    var varBaseURL=this.getBaseURL()+'Accounts';//?id=4&pageid=1';
+   var varBaseURL=this.getBaseURL()+'Accounts';
 
-    let headers:Headers = new Headers();
-    headers.append('Accept', 'application/json');
-    let params:URLSearchParams = new URLSearchParams();
-    params.append('id','4');
-    params.append('pageid','1');
-    let options = new RequestOptions({ headers: headers, params: params });
+    let headers:HttpHeaders  = new HttpHeaders(
+      {
+        'Accept': 'application/json',
+        'Auth': 'Basic'
+      }
+    );
 
-    /*   return this.http.get(varBaseURL,
-        {
-          headers:headers,
-          params: params, 
-          responseType: ResponseContentType.Json        }
-        )
-        .map((res: Response) => res.json());*/
-        
-       return this.http.get(varBaseURL,options
-        )
+    let params:HttpParams = new HttpParams();
+    
+     params = new HttpParams({
+      fromObject: {
+        id: '4',
+        pageid:'1'
+      }
+    });
+
+       /*return this.http.get(varBaseURL)
         .map((res: Response) => res.json());
+      */
+      return this.httpclient.get(varBaseURL,{headers:headers,params:params});
+        
   }
 
   getBaseURL(){

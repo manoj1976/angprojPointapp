@@ -11,13 +11,15 @@ export class AppErrorHandlerService {
   constructor(private toastr: ToastrService) { }
   
   errorHandler(parerror:any,showmsg:boolean){
-    let v1=parerror._body
-    let v2=JSON.parse(v1);
+    let v1=parerror.error
+    //let v2=JSON.parse(v1);
+    
     let str1='error'
-    if (v2.ExceptionMessage!=null)
-      str1=v2.ExceptionMessage;
-    else if (v2.Message!=null)
-      str1=v2.Message;
+    if(v1!=null)
+    if (v1.ExceptionMessage!=null)
+      str1=v1.ExceptionMessage;
+    else if (v1.Message!=null)
+      str1=v1.Message;
 
       if (showmsg)
         this.displayToastMsg(str1,'E');

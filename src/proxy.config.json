@@ -1,7 +1,16 @@
 {
     "/api/*": {
-      "target": "http://localhost:61010/Transactions/",
+      "target": "http://mbaby01/PointAppWebAPI/",
       "secure": false,
-      "logLevel":"debug"
+      "logLevel":"debug",
+      "changeOrigin":true
       }
+,
+      "/account/*": {
+        "target": "http://mbaby01/PointAppWebAPI/",
+        "secure": false,
+        "logLevel":"debug",
+        "changeOrigin":true
+        }
+  
   }
