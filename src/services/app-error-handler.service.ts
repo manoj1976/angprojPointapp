@@ -20,6 +20,9 @@ export class AppErrorHandlerService {
       str1=v1.ExceptionMessage;
     else if (v1.Message!=null)
       str1=v1.Message;
+    else 
+      str1=v1;
+
 
       if (showmsg)
         this.displayToastMsg(str1,'E');
