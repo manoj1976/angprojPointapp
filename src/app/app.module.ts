@@ -16,8 +16,9 @@ import { TemplpageheadingComponent } from '../templates/templpageheading/templpa
 import { FmtPipe } from '../pipes/fmt.pipe';
 
 import { AccountsComponent } from './accounts/accounts.component';
-import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { SignupComponent } from './signup/signup.component';
+import { SigninComponent } from './signin/signin.component';
 
 
 
@@ -31,8 +32,9 @@ import { HomeComponent } from './home/home.component';
     FmtPipe,
     TransactionComponent,
     AccountsComponent,
-    LoginComponent,
     HomeComponent,
+    SignupComponent,
+    SigninComponent,
     
   ],
   imports: [

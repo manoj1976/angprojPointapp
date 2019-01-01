@@ -1,0 +1,40 @@
+ <div class="jumbotron">
+  <div class="container">
+      <div class="row">
+          
+          <div class="col-sm-8 offset-sm-1">
+            <h3>Sign in</h3>
+            <form [formGroup]="loginForm" (ngSubmit)="btnRegister()">
+       
+                
+                <div class="form-group">
+                  <strong> <label for="Email">Username</label></strong>
+                  <input type="text" formControlName="username" class="form-control" />
+                  <div *ngIf="username.invalid && username.touched" class="alert alert-danger"  role="alert">
+                    <div *ngIf="username.errors.required">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                      Username is required
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <strong><label for="password">Password</label></strong>
+                    <input type="password" formControlName="password" class="form-control"  />
+                    <div *ngIf="password.invalid && password.touched" class="alert alert-danger"  role="alert">
+                      <div *ngIf="password.errors.required">
+                          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                          <span class="sr-only">Error:</span>
+                        Password is required
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button [disabled]="loading" class="btn btn-primary btn-lg" [disabled]="! loginForm.valid">Sign in</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+              

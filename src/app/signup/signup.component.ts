@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup,FormBuilder,Validators } from '@angular/forms';
+import {Route, Router} from '@angular/router';
+
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
 })
-export class LoginComponent implements OnInit {
+export class SignupComponent implements OnInit {
+
   registerForm:FormGroup;
   firstname:FormControl;
   lastname:FormControl;
@@ -14,16 +17,10 @@ export class LoginComponent implements OnInit {
   username:FormControl
 
 
-  /*registerForm = new FormGroup ({
-    firstName: new FormControl(''),
-    lastName: new FormControl(),
-    email: new FormControl(),
-    password: new FormControl(),
-
-  });
-*/
-  constructor(private formBuilder: FormBuilder) { 
-    //this.createForm();
+  constructor(
+    private formBuilder: FormBuilder,
+    private router:Router
+    ) { 
 }
 
   ngOnInit() {
@@ -58,5 +55,6 @@ export class LoginComponent implements OnInit {
 btnRegister(){
   alert('a');
 }
+
 
 }
