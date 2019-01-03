@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { AppService } from 'src/services/app.service';
 import { FmtPipe } from 'src/pipes/fmt.pipe';
 import { SessionService } from 'src/services/session.service';
+import { DataService } from 'src/services/data.service';
 
 //https://dzone.com/articles/understanding-output-and-eventemitter-in-angular -- explains the event
 @Component({
@@ -22,10 +23,17 @@ export class TempletbleeditComponent implements OnInit {
   frm:number=0;to:number=this.env.nooftablerecords;pageno:number=1;
   selectedrow:any={id:0};
 
-  constructor(private appsvc:AppService,private session: SessionService){
+  constructor(
+    private appsvc:AppService,
+    private session: SessionService,
+    public datasvc:DataService
+
+    ){
     
   }
   ngOnInit() {
+    
+    var v1=this.datasvc.getHttpRequestHeader();
   }
   
  // btnNext(){if (!(this.to>=this.data.length)) {this.frm+=this.env.nooftablerecords;this.to+=this.env.nooftablerecords;}}

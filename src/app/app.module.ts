@@ -22,6 +22,7 @@ import { SigninComponent } from './signin/signin.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +47,7 @@ import { SigninComponent } from './signin/signin.component';
     FormsModule,
     BrowserAnimationsModule, //required for ToastrModule added
     ToastrModule.forRoot() // ToastrModule added
+    
 
   ],
   providers: [],

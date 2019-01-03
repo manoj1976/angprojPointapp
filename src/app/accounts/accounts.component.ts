@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
-
 import { DataService } from 'src/services/data.service';
 import { AppErrorHandlerService } from 'src/services/app-error-handler.service';
-import { catchError } from 'rxjs/operators';
+//import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-accounts',
@@ -19,10 +17,12 @@ export class AccountsComponent implements OnInit {
     private datasvc:DataService,
     private errsvc:AppErrorHandlerService,
     ){
+      
   }
 
   ngOnInit() {
     this.btnClick();
+    
   }
   
   btnClick(){

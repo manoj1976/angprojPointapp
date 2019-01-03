@@ -8,6 +8,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { appInitializerFactory } from '@angular/platform-browser/src/browser/server-transition';
 import { Params } from '@angular/router';
 import { HttpParamsOptions } from '@angular/common/http/src/params';
+import { AppService } from './app.service';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 
 @Injectable({
@@ -15,7 +17,11 @@ import { HttpParamsOptions } from '@angular/common/http/src/params';
 })
 export class DataService {
 
-  constructor(private http :Http,private httpclient:HttpClient) {}
+  constructor(
+    private http :Http,
+    private httpclient:HttpClient,
+    private appsvc:AppService
+    ) {}
 
   getTransactions(): any{
     var varBaseURL=this.getBaseURL()+'Transactions?id=4&pageid=1';
@@ -25,13 +31,13 @@ export class DataService {
   getAccounts(){
    var varBaseURL=this.getBaseURL()+'Accounts';
 
-    let headers:HttpHeaders  = new HttpHeaders(
+    /*let headers:HttpHeaders  = new HttpHeaders(
       {
         'Accept': 'application/json',
         'Auth': 'Basic'
       }
     );
-
+*/
     let params:HttpParams = new HttpParams();
     
      params = new HttpParams({
@@ -44,8 +50,14 @@ export class DataService {
        /*return this.http.get(varBaseURL)
         .map((res: Response) => res.json());
       */
-      return this.httpclient.get(varBaseURL,{headers:headers,params:params});
+      //return this.httpclient.get(varBaseURL,{headers:headers,params:params});
+      return this.httpclient.get(varBaseURL,{headers:this.appsvc.getHttpRequestHeader(),params:params});
         
+  }
+
+  signIn(userid:string,pwd:string):boolean{ //to be changed -- call api and validate userid -- return the access token
+
+    return true;
   }
 
   getBaseURL(){

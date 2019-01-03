@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -53,7 +54,29 @@ export class AppService {
       }
     }
   }
+  private userdet:any;private httpheaders:HttpHeaders;
 
+  setUserDetails(paruser:any){
+    this.userdet=paruser;
+    //this.appsvc.setHttpRequestHeader()
+    this.setHttpRequestHeader();
+    }
   
+    setHttpRequestHeader():void{
+        this.httpheaders  = new HttpHeaders(
+        {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer '+this.userdet.accesstoken
+        }
+      );
+    }
+  
+    getHttpRequestHeader():HttpHeaders{
+  
+      return this.httpheaders;
+    }
 
 }
+
+
+

@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup,FormBuilder,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DataService } from 'src/services/data.service';
 
 
 @Component({
@@ -14,6 +15,7 @@ export class AppComponent {
 
   constructor(
     private router:Router
+    
     ) { 
     }
 
@@ -23,5 +25,9 @@ export class AppComponent {
   
   btnSignin(){
     this.router.navigate(['signin']);
+  }
+
+  menuAccounts(){
+    this.router.navigate(['accounts']);
   }
 }
