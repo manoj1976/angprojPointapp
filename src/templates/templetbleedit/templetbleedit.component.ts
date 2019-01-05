@@ -32,8 +32,6 @@ export class TempletbleeditComponent implements OnInit {
     
   }
   ngOnInit() {
-    
-    var v1=this.datasvc.getHttpRequestHeader();
   }
   
  // btnNext(){if (!(this.to>=this.data.length)) {this.frm+=this.env.nooftablerecords;this.to+=this.env.nooftablerecords;}}
