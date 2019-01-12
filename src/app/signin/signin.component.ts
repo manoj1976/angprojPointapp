@@ -42,6 +42,7 @@ export class SigninComponent implements OnInit {
   btnLogin(){
     if (this.datasvc.signIn('m','m')) //to be changed
       this.appsvc.setUserDetails({userid:'m',accesstoken:'xyz'});
+      this.router.navigate(['home']);
   }
 
 }

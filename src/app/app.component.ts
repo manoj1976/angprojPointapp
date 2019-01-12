@@ -30,4 +30,8 @@ export class AppComponent {
   menuAccounts(){
     this.router.navigate(['accounts']);
   }
+
+  menuTrans(){
+    this.router.navigate(['trans']);
+  }
 }

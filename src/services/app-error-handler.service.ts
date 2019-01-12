@@ -8,12 +8,18 @@ import {Router} from "@angular/router";
 })
 export class AppErrorHandlerService {
 
-  constructor(private toastr: ToastrService) { }
+  constructor(
+    private toastr: ToastrService,
+    private router:Router
+    ) { }
   
   errorHandler(parerror:any,showmsg:boolean){
     let v1=parerror.error
     //let v2=JSON.parse(v1);
-    
+    if (parerror.status!=null)
+      if (parerror.status=HttpStatus.UNAUTHORIZED)
+      this.router.navigate(['']);
+
     let str1='error'
     if(v1!=null)
     if (v1.ExceptionMessage!=null)

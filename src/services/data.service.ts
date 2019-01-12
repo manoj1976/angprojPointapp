@@ -24,8 +24,21 @@ export class DataService {
     ) {}
 
   getTransactions(): any{
-    var varBaseURL=this.getBaseURL()+'Transactions?id=4&pageid=1';
-       return this.http.get(varBaseURL).map((res: Response) => res.json());
+    //var varBaseURL=this.getBaseURL()+'Transactions?id=4&pageid=1';
+    //   return this.http.get(varBaseURL).map((res: Response) => res.json());
+    var varBaseURL=this.getBaseURL()+'Transactions';
+    let headers:HttpHeaders=this.appsvc.getHttpRequestHeader();
+    let params:HttpParams = new HttpParams();
+    
+     params = new HttpParams({
+      fromObject: {
+        id: '4',
+        pageid:'1'
+      }
+    });
+    return this.httpclient.get(varBaseURL,{headers:headers,params:params});
+
+
   }
 
   getAccounts(){
@@ -34,10 +47,11 @@ export class DataService {
     /*let headers:HttpHeaders  = new HttpHeaders(
       {
         'Accept': 'application/json',
-        'Auth': 'Basic'
+        'Authorization': 'Basic'
       }
     );
 */
+    let headers:HttpHeaders=this.appsvc.getHttpRequestHeader();
     let params:HttpParams = new HttpParams();
     
      params = new HttpParams({
@@ -50,8 +64,7 @@ export class DataService {
        /*return this.http.get(varBaseURL)
         .map((res: Response) => res.json());
       */
-      //return this.httpclient.get(varBaseURL,{headers:headers,params:params});
-      return this.httpclient.get(varBaseURL,{headers:this.appsvc.getHttpRequestHeader(),params:params});
+      return this.httpclient.get(varBaseURL,{headers:headers,params:params});
         
   }
 
