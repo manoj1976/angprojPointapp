@@ -36,9 +36,7 @@ export class DataService {
         pageid:'1'
       }
     });
-    return this.httpclient.get(varBaseURL,{headers:headers,params:params});
-
-
+    return this.httpclient.get(varBaseURL,{headers:headers,responseType:'json',params:params});
   }
 
   getAccounts(){
@@ -64,13 +62,36 @@ export class DataService {
        /*return this.http.get(varBaseURL)
         .map((res: Response) => res.json());
       */
-      return this.httpclient.get(varBaseURL,{headers:headers,params:params});
+      return this.httpclient.get(varBaseURL,{headers:headers,responseType:'json', params:params});
         
   }
 
   signIn(userid:string,pwd:string):boolean{ //to be changed -- call api and validate userid -- return the access token
 
     return true;
+  }
+
+  downloadNAVInvoice(parDocno:string){
+    var varBaseURL=this.getBaseURL()+'Invoice/Download';
+    let headers:HttpHeaders  = new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'Accept': 'application/pdf',
+        'Authorization': 'Basic'
+      }
+    );
+
+    
+    
+    let params:HttpParams = new HttpParams();
+    params = new HttpParams({
+      fromObject: {
+        docId: 'test'
+      }
+    });
+
+    return this.httpclient.get(varBaseURL,{headers:headers,responseType:'blob', params:params});
+        
   }
 
   getBaseURL(){

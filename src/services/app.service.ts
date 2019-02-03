@@ -64,7 +64,7 @@ export class AppService {
   
     setHttpRequestHeader():void{
        if (this.userdet.accesstoken==null)
-        throw 'manoj';
+        throw 'Access token not found';
         this.httpheaders  = new HttpHeaders(
         {
           'Accept': 'application/json',

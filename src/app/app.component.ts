@@ -34,4 +34,8 @@ export class AppComponent {
   menuTrans(){
     this.router.navigate(['trans']);
   }
+
+  menuNAVInvoices(){
+    this.router.navigate(['navinvoices']);
+  }
 }

@@ -7,10 +7,12 @@ import { SigninComponent } from './signin/signin.component';
 import {HomeComponent} from './home/home.component';
 
 import { from } from 'rxjs';
+import { DwnloadNAVInvoiceComponent } from './dwnload-navinvoice/dwnload-navinvoice.component';
 
 const routes: Routes = [
   {path:'trans',component:TransactionComponent},
   {path:'accounts',component:AccountsComponent},
+  {path:'navinvoices',component:DwnloadNAVInvoiceComponent},
   {path:'home',component:HomeComponent},
   {path:'signup',component:SignupComponent},
   {path:'signin',component:SigninComponent},

@@ -19,6 +19,7 @@ import { AccountsComponent } from './accounts/accounts.component';
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
+import { DwnloadNAVInvoiceComponent } from './dwnload-navinvoice/dwnload-navinvoice.component';
 
 
 
@@ -36,6 +37,7 @@ import { SigninComponent } from './signin/signin.component';
     HomeComponent,
     SignupComponent,
     SigninComponent,
+    DwnloadNAVInvoiceComponent,
     
   ],
   imports: [
